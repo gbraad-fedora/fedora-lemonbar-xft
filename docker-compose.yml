@@ -1,0 +1,20 @@
+rpmbuild:
+  build: .
+  volumes:
+    - .:/root:ro
+    - rpmbuild:/root/rpmbuild
+  environment:
+    SOURCE_URL: http://github.com/krypt-n/bar/tarball/088ddb6
+  working_dir: /root
+  command:
+    - bash
+    - -c
+    - |
+      #!/bin/bash
+      mkdir -p rpmbuild/{SOURCES,SPECS}
+      cp lemonbar-xft.spec rpmbuild/SPECS
+      if [ ! -f rpmbuild/SOURCES/krypt-n-bar-g088ddb6.tar.gz ]
+      then
+        curl -vfL "$SOURCE_URL" > rpmbuild/SOURCES/krypt-n-bar-g088ddb6.tar.gz
+      fi
+      rpmbuild -ba rpmbuild/SPECS/lemonbar-xft.spec
