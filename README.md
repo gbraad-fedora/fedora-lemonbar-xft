@@ -1,4 +1,4 @@
-# lemonbar RPM Package
+# lemonbar-Xft RPM Package
 
 This is an RPM package for lemonbar.
 

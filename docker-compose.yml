@@ -4,7 +4,7 @@ rpmbuild:
     - .:/root:ro
     - rpmbuild:/root/rpmbuild
   environment:
-    SOURCE_URL: http://github.com/LemonBoy/bar/tarball/2e8ac2c
+    SOURCE_URL: http://github.com/PH111P/bar/tarball/a8d8e9d
   working_dir: /root
   command:
     - bash
@@ -12,9 +12,9 @@ rpmbuild:
     - |
       #!/bin/bash
       mkdir -p rpmbuild/{SOURCES,SPECS}
-      cp lemonbar.spec rpmbuild/SPECS
-      if [ ! -f rpmbuild/SOURCES/LemonBoy-bar-2e8ac2c.tar.gz ]
+      cp lemonbar-xft.spec rpmbuild/SPECS
+      if [ ! -f rpmbuild/SOURCES/PH111P-bar-a8d8e9d.tar.gz ]
       then
-        curl -vfL "$SOURCE_URL" > rpmbuild/SOURCES/LemonBoy-bar-2e8ac2c.tar.gz
+        curl -vfL "$SOURCE_URL" > rpmbuild/SOURCES/PH111P-bar-a8d8e9d.tar.gz
       fi
-      rpmbuild -ba rpmbuild/SPECS/lemonbar.spec
+      rpmbuild -ba rpmbuild/SPECS/lemonbar-xft.spec
